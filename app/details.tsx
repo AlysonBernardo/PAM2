@@ -1,13 +1,8 @@
 import fetchCharacters from "@/services/api";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { Image, Text, View, FlatList, StyleSheet } from "react-native";
-
-interface Personagem {
-    id: number;
-    name: string;
-    images: [string]
-};
+import { Image, Text, View, FlatList, StyleSheet, Button, TouchableOpacity, ImageBackground } from "react-native";
+import { Personagem } from "@/interfaces/Personagem";
 
 export default function Home() {
     const router = useRouter();
@@ -29,8 +24,10 @@ export default function Home() {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({item}) => (
                 <View style={style.card}>
-                    <Image source={{uri: item.images[0]}} style={style.image}/>
+                    <TouchableOpacity onPress={() => {router.push('/')}}>
+                    <ImageBackground source={{uri: item.images[0]}} style={style.image}/>
                     <Text style={style.name}>{item.name}</Text>
+                    </TouchableOpacity>
                 </View>                
                 )}
             />
@@ -63,3 +60,15 @@ export default function Home() {
         fontWeight: "bold"
     }
  });
+
+// export function CharacterAtrributes(){
+//   const router = useRouter();
+//
+//    return (
+//        <View style={{flex:1, justifyContent:"center", alignItems:"center"}}>
+//            <Text>Página Home</Text>
+//            <Button title="See the attributes from "
+//            onPress={() => router.push('/details')}/>
+//        </View>
+//    )
+// }

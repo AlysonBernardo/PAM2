@@ -5,7 +5,7 @@ import { Button, Text, View } from "react-native";
 export default function HomeScreen() {
     const router= useRouter();
     const [count, setCount] = useState(0);
-
+    
     useEffect(() => {
         console.log("Componente montado!");
     }, [])
